@@ -47,13 +47,13 @@ end
   #     end
   #   end
 
-  #   def create_contact(firstname, surname, email)
-  #     id = connection.exec("INSERT INTO contacts (firstname, lastname, email)
-  #     VALUES ( '#{firstname}', '#{surname}', '#{email}') RETURNING id").getvalue(0,0)
-  #     Contact.new(firstname, surname, email, id)
-  #     @id = id
-  #     puts @id
-  #   end
+     def create_contact(firstname, surname, email)
+       id = connection.exec("INSERT INTO contacts (firstname, lastname, email)
+       VALUES ( '#{firstname}', '#{surname}', '#{email}') RETURNING id").getvalue(0,0)
+       Contact.new(firstname, surname, email, id)
+       @id = id
+       puts @id
+     end
 
   # 	def all
   # 		@@contacts

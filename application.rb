@@ -24,14 +24,14 @@ class Application
     print "> "
   end
 
-  def create_contant
-    puts "Create a new contact - Please input a name: "
-    name = gets.chomp.to_s
-    puts "Email address? "
-    email = gets.chomp.to_s
-    new_contact(name, email)
-    ask_for_input
-  end
+  #def create_contact
+    #puts "Create a new contact - Please input a name: "
+    #name = gets.chomp.to_s
+    #puts "Email address? "
+    #email = gets.chomp.to_s
+    #new_contact(name, email)
+    #ask_for_input
+  #end
 
   def ask_for_input
     puts "What would you like to do? Type 'options' for options."
@@ -66,8 +66,8 @@ class Application
     surname = gets.chomp
     puts "Whatz da emails?"
     email = gets.chomp
-    # Contact.create_contact(firstname, surname, email)
-    Contact.create_contact(firstname, surname, email)
+    create_contact(firstname, surname, email)
+    #Contact.create_contact(firstname, surname, email)
     puts "Thanks!"
     ask_for_input
   end

@@ -1,8 +1,3 @@
-require 'pry'
-require 'active_record'
-# require_relative 'contact'
-require_relative 'main'
-
 # Output messages from AR to STDOUT
 ActiveRecord::Base.logger = Logger.new(STDOUT)
 
