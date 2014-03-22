@@ -63,11 +63,10 @@ class Application
     puts "Please enter first name"
     firstname = gets.chomp
     puts "Please enter last name"
-    surname = gets.chomp
+    lastname = gets.chomp
     puts "Whatz da emails?"
     email = gets.chomp
-    create_contact(firstname, surname, email)
-    #Contact.create_contact(firstname, surname, email)
+    Contact.create(:firstname => "#{firstname}", :lastname => "#{lastname}", :email => "#{email}")
     puts "Thanks!"
     ask_for_input
   end
