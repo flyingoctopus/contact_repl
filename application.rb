@@ -61,12 +61,22 @@ class Application
 
   def input_contact
     puts "Please enter first name"
-    firstname = gets.chomp
+    firstname = gets.chomp!
+    puts " => you entered: #{firstname}"
     puts "Please enter last name"
-    lastname = gets.chomp
+    lastname = gets.chomp!
+    puts " => you entered: #{lastname}"
     puts "Whatz da emails?"
-    email = gets.chomp
-    Contact.create(:firstname => "#{firstname}", :lastname => "#{lastname}", :email => "#{email}")
+    email = gets.chomp!
+    puts " => you entered: #{email}"
+    begin
+      Contact.create(:firstname => "#{firstname}", :lastname => "#{lastname}", :email => "#{email}")
+    rescue Exception => e
+      puts "#{e.message}"
+      puts "#{e.backtrace}"
+    end
+      
+    
     puts "Thanks!"
     ask_for_input
   end

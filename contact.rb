@@ -1,16 +1,11 @@
 class Contact <ActiveRecord::Base
 
-  attr_accessor :firstname, :lastname, :email, :id
+  #self.table_name = "contacts"
+  self.primary_key = :id
 
-
-  self.table_name = "contacts"
+  attr_accessor :id
 
   def create_contact(firstname, lastname, email)
-    #id = connection.exec("INSERT INTO contacts (firstname, lastname, email)
-    #VALUES ( '#{firstname}', '#{lastname}', '#{email}') RETURNING id").getvalue(0,0)
-
-
-    #Contact.new(firstname, lastname, email)
     @id = id
     puts @id
   end

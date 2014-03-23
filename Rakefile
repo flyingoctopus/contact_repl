@@ -13,10 +13,8 @@ namespace :db do
                           adapter: 'postgresql',
                           encoding: 'unicode',
                           pool: 5,
-                          database: 'd41v60r8f4uio6',
-                          username: 'baorjodkhgotca',
-                          password: 'cG6WmW0m4HExgxS4kwx9Zxer5Y',
-                          host: 'ec2-54-204-24-202.compute-1.amazonaws.com',
+                          database: 'melissa',
+                          host: 'localhost',
                           port: 5432,
                           min_messages: 'error',
                           table_name: 'contacts' }
@@ -30,14 +28,13 @@ namespace :db do
                           adapter: 'postgresql',
                           encoding: 'unicode',
                           pool: 5,
-                          database: 'd41v60r8f4uio6',
-                          username: 'baorjodkhgotca',
-                          password: 'cG6WmW0m4HExgxS4kwx9Zxer5Y',
-                          host: 'ec2-54-204-24-202.compute-1.amazonaws.com',
                           port: 5432,
-                          min_messages: 'error'}
+                          database: '',
+                          host: 'localhost',
+                          min_messages: 'error',
+                          table_name: 'contacts'}
     ActiveRecord::Base.establish_connection(connection_details)
-    ActiveRecord::Base.connection.create_database 'contacts2'
+    ActiveRecord::Base.connection.create_database 'melissa'
   end
 
   desc "drop the db"
@@ -46,17 +43,13 @@ namespace :db do
                           adapter: 'postgresql',
                           encoding: 'unicode',
                           pool: 5,
-                          database: 'd41v60r8f4uio6',
-                          username: 'baorjodkhgotca',
-                          password: 'cG6WmW0m4HExgxS4kwx9Zxer5Y',
-                          host: 'ec2-54-204-24-202.compute-1.amazonaws.com',
+                          database: '',
+                          host: 'localhost',
                           port: 5432,
                           min_messages: 'error',
                           table_name: 'contacts' }
-    admin_connection = connection_details.merge({'database'=> 'd41v60r8f4uio6', 
-                                                'schema_search_path'=> 'contacts'}) 
-    ActiveRecord::Base.establish_connection(admin_connection)
-    ActiveRecord::Base.connection.drop_database(connection_details.fetch('database'))
+    ActiveRecord::Base.establish_connection(connection_details)
+    ActiveRecord::Base.connection.drop_database 'melissa'
   end
 end
 
