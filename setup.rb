@@ -19,7 +19,6 @@ ActiveRecord::Base.establish_connection(
   encoding: 'unicode',
   pool: 5,
   database: 'melissa',
-  password: 'cG6WmW0m4HExgxS4kwx9Zxer5Y',
   host: 'localhost',
   port: 5432,
   min_messages: 'error',

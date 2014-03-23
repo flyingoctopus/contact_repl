@@ -1,7 +1,9 @@
 class Application
   attr_accessor :name, :email
 
-  @quit = false
+  def initialize
+    @quit = false
+  end
 
   def run
     puts "Welcome to da contact ap. What do you want"
@@ -30,7 +32,6 @@ class Application
     #puts "Email address? "
     #email = gets.chomp.to_s
     #new_contact(name, email)
-    #ask_for_input
   #end
 
   def ask_for_input
@@ -39,9 +40,8 @@ class Application
     case input
       when "options"
         print_menu_options
-        ask_for_input
       when "new"
-        input_contact
+        create_contact
       when "list"
         list_all_contacts
       when "find"
@@ -59,7 +59,7 @@ class Application
       end
   end
 
-  def input_contact
+  def create_contact
     puts "Please enter first name"
     firstname = gets.chomp!
     puts " => you entered: #{firstname}"
@@ -78,16 +78,22 @@ class Application
       
     
     puts "Thanks!"
-    ask_for_input
   end
 
   def list_all_contacts
     puts '*************'
     contacts = Contact.all
     contacts.each do |contact|
-      puts contact.to_s
+      #puts contact.firstname
+      puts contact.attributes.values
+      format="%#{Contact.firstname}s\t%#{Contact.max_variety}s\t%#{Contact.max_container}s\n"
+      printf(format, "First Name", "Last Name", "Email")
+      printf(format, "----", "-------", "---------")
+      products.each do |p|
+        printf(format, p.name, p.variety, p.container)
     end
-    ask_for_input
+    end
+    #ask_for_input
   end
 
   def find_contacts
@@ -109,7 +115,6 @@ class Application
 
   def wrong_input
     puts "I didn't understand, bro!"
-    ask_for_input
   end
 
   def invalid_search
@@ -126,5 +131,5 @@ class Application
     @quit = true
     puts "good bye" 
   end
-
 end
+

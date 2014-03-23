@@ -6,8 +6,13 @@ class Contact <ActiveRecord::Base
   attr_accessor :id
 
   def create_contact(firstname, lastname, email)
-    @id = id
-    puts @id
+    begin
+      self.build(:firstname => "#{firstname}", :lastname => "#{lastname}", :email => "#{email}")
+      self.save
+    rescue Exception => e
+      puts "#{e.message}"
+      puts "#{e.backtrace}"
+    end
   end
 
   def find_by_user_id(user_id)
